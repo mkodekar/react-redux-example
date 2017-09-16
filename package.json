@@ -1,0 +1,22 @@
+{
+  "name": "react-redux-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkodekar/react-redux-example.git"
+  },
+  "keywords": [
+    "redux"
+  ],
+  "author": "Rehan Kodekar <rkodekar@zoho.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mkodekar/react-redux-example/issues"
+  },
+  "homepage": "https://github.com/mkodekar/react-redux-example#readme"
+}
