@@ -1,10 +1,16 @@
-import {createStore, combineReducers} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import logger from 'redux-logger';
 
 const initialState = {
     result: 1,
     lastValue: []
 };
 
+
+const myLogger = (store) =>(next) =>(action) => {
+    console.log("This action", action);
+    next(action);
+}
 
 const humanReducer = (state = {
     name: "Rehan",
@@ -45,7 +51,7 @@ const reducer = (state = {
     return state;
 };
 
-const store = createStore(combineReducers({reducer, humanReducer}));
+const store = createStore(combineReducers({reducer, humanReducer}), {}, applyMiddleware(myLogger, logger));
 
 store.subscribe(() => {
     console.log("New state ", store.getState());
