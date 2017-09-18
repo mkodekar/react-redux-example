@@ -1,11 +1,31 @@
-import {createStore} from 'redux';
+import {createStore, combineReducers} from 'redux';
 
 const initialState = {
     result: 1,
     lastValue: []
 };
 
-const reducer = (state = initialState, action) => {
+
+const humanReducer = (state = {
+    name: "Rehan",
+    age: "26"
+}, action) => {
+    switch(action.type) {
+        case 'ADD_USER':
+            state = {
+                ...state,
+                name: action.payload_name,
+                age: action.payload_age,
+            };
+            break;
+    }
+    return state;
+};
+
+const reducer = (state = {
+    result: 1,
+    lastValue: []
+}, action) => {
     switch(action.type) {
         case 'ADD':
             state = {
@@ -25,7 +45,7 @@ const reducer = (state = initialState, action) => {
     return state;
 };
 
-const store = createStore(reducer);
+const store = createStore(combineReducers({reducer, humanReducer}));
 
 store.subscribe(() => {
     console.log("New state ", store.getState());
@@ -44,4 +64,10 @@ store.dispatch({
 store.dispatch({
     type: 'SUBTRACT',
     payload: 10
+})
+
+store.dispatch({
+    type: 'ADD_USER',
+    payload_name: "Pritesh",
+    payload_age: 23  
 })
