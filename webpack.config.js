@@ -21,7 +21,8 @@ var config = {
                 include: SRC_DIR,
                 loader: "babel-loader",
                 query: {
-                    presets: ["react", "es2016",]
+                    plugins: ["transform-object-rest-spread"],
+                    presets: ["react", "es2016", "stage-2"]
                 }
             }
         ]
